@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, ExternalLink, Briefcase, BookOpen, Award, FileText, Download, ChevronRight, MapPin, User } from 'lucide-react';
+import { Mail, ExternalLink, Briefcase, BookOpen, Award, FileText, Download, ChevronRight, MapPin, User, TrendingUp, Building, GraduationCap, Star, CheckCircle } from 'lucide-react';
 
 // --- Custom Logo ---
 const CustomLogo = () => (
@@ -19,9 +19,9 @@ const CustomLogo = () => (
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
-  // --- PAGE 1: HOME PAGE ---
+  // --- PAGE 1: EXCITING HOME PAGE ---
   const renderHome = () => (
-    <div className="animate-in fade-in duration-500">
+    <div className="animate-in fade-in duration-500 pb-20">
       
       {/* 1. COVER PICTURE SECTION */}
       <div className="w-full h-64 md:h-80 lg:h-96 relative bg-slate-200 overflow-hidden border-b border-slate-200">
@@ -31,10 +31,10 @@ export default function App() {
           onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80" }}
           className="w-full h-full object-cover object-center block"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent pointer-events-none"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 relative -mt-24 sm:-mt-32 mb-16">
+      <div className="max-w-7xl mx-auto px-4 relative -mt-24 sm:-mt-32 mb-12">
         <div className="flex flex-col md:flex-row gap-8 items-start md:items-end">
           
           {/* 2. YOUR PROFILE PICTURE */}
@@ -43,7 +43,8 @@ export default function App() {
                <img 
                  src="/profile-pic.jpeg" 
                  alt="Vishakha Arora" 
-                 onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" }}
+                 // If the image fails to load, it will now show a generic blank silhouette avatar instead of the stock woman!
+                 onError={(e) => { e.target.src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" }}
                  className="w-full h-full object-cover block"
                />
             </div>
@@ -55,10 +56,10 @@ export default function App() {
               Vishakha Arora
             </h1>
             <p className="text-xl text-pink-600 font-medium mb-4 flex items-center gap-2">
-              <User size={20}/> MBA (HRM) Candidate
+              <GraduationCap size={22}/> MBA (HRM) Candidate • IIM Indore
             </p>
             <p className="text-lg text-slate-600 max-w-2xl leading-relaxed mb-6">
-              Over 2 years of experience driving process leadership, HR analytics, and operational excellence at Infosys. Currently pursuing my MBA in HR at IIM Indore.
+              Strategic HR professional with over 2 years of proven experience driving process leadership, HR analytics, and operational excellence. Passionate about bridging data and human capital.
             </p>
             
             <div className="flex flex-wrap items-center gap-4">
@@ -76,21 +77,99 @@ export default function App() {
         </div>
       </div>
       
-      {/* Quick Stats/Highlights */}
-      <div className="max-w-7xl mx-auto px-4 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
-            <h3 className="font-semibold text-slate-900 mb-2">Location</h3>
-            <p className="text-slate-600 flex items-center gap-2"><MapPin size={16} className="text-pink-500"/> Indore, India</p>
+      {/* 3. HIGHLIGHTS & IMPACT SECTION (NEW) */}
+      <div className="max-w-7xl mx-auto px-4 space-y-10">
+        
+        {/* Quick Tag Pills */}
+        <div className="flex flex-wrap gap-3 pb-4 border-b border-slate-100">
+          <span className="flex items-center gap-1.5 px-4 py-2 bg-slate-50 border border-slate-200 text-slate-700 rounded-full text-sm font-medium"><MapPin size={16} className="text-pink-500"/> Indore, India</span>
+          <span className="flex items-center gap-1.5 px-4 py-2 bg-slate-50 border border-slate-200 text-slate-700 rounded-full text-sm font-medium">HR Analytics</span>
+          <span className="flex items-center gap-1.5 px-4 py-2 bg-slate-50 border border-slate-200 text-slate-700 rounded-full text-sm font-medium">Talent Acquisition</span>
+          <span className="flex items-center gap-1.5 px-4 py-2 bg-slate-50 border border-slate-200 text-slate-700 rounded-full text-sm font-medium">Process Leadership</span>
+          <span className="flex items-center gap-1.5 px-4 py-2 bg-slate-50 border border-slate-200 text-slate-700 rounded-full text-sm font-medium">Lean Six Sigma</span>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          {/* IIM Indore Journey Card */}
+          <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-white relative overflow-hidden shadow-lg shadow-slate-900/10">
+            <div className="absolute -top-10 -right-10 opacity-10 text-white pointer-events-none">
+              <GraduationCap size={250} />
+            </div>
+            
+            {/* Spot for IIM Indore Logo */}
+            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-md">
+              <img 
+                src="/iim-logo.png" 
+                alt="IIM Indore Logo" 
+                className="w-12 h-12 object-contain"
+                // Fallback text if the logo isn't uploaded yet
+                onError={(e) => { 
+                  e.target.style.display = 'none'; 
+                  e.target.nextSibling.style.display = 'block'; 
+                }} 
+              />
+              <span className="hidden text-slate-900 font-extrabold text-xl font-serif">IIM</span>
+            </div>
+
+            <h2 className="text-3xl font-bold mb-2">IIM Indore</h2>
+            <p className="text-pink-400 font-semibold text-lg mb-6">MBA (HRM) Candidate • Class of 2027</p>
+            <p className="text-slate-300 leading-relaxed text-lg mb-8">
+              Specializing in HR Analytics, Talent Acquisition, and Organizational Behavior. Currently translating theoretical frameworks into data-driven people management strategies.
+            </p>
+            
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-medium backdrop-blur-sm">SPSS Data Analysis</span>
+              <span className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-medium backdrop-blur-sm">Labour Laws</span>
+              <span className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-medium backdrop-blur-sm">Compensation & Structuring</span>
+            </div>
           </div>
-          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
-            <h3 className="font-semibold text-slate-900 mb-2">Experience</h3>
-            <p className="text-slate-600">28 Months • Process Leadership & Analytics</p>
+
+          {/* Infosys BPM Experience Card */}
+          <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm relative overflow-hidden">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="p-4 bg-blue-50 text-blue-600 rounded-2xl">
+                <Building size={32} />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-slate-900">Infosys BPM</h2>
+                <p className="text-slate-500 font-medium">Senior Process Executive • 28 Months</p>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="mt-1 bg-emerald-100 p-1.5 rounded-full text-emerald-600 shrink-0">
+                  <CheckCircle size={18} />
+                </div>
+                <div>
+                  <h4 className="text-slate-900 font-bold mb-1">Operational Accuracy</h4>
+                  <p className="text-slate-600 leading-relaxed">Validated 1,000+ complex U.S. mortgage documents weekly, consistently maintaining a flawless <strong>99.5% accuracy rate</strong> while meeting strict SLAs.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="mt-1 bg-pink-100 p-1.5 rounded-full text-pink-600 shrink-0">
+                  <TrendingUp size={18} />
+                </div>
+                <div>
+                  <h4 className="text-slate-900 font-bold mb-1">Process Optimization</h4>
+                  <p className="text-slate-600 leading-relaxed">Spearheaded workflow streamlining initiatives that successfully improved overall turnaround time by <strong>18%</strong>.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="mt-1 bg-amber-100 p-1.5 rounded-full text-amber-600 shrink-0">
+                  <Star size={18} />
+                </div>
+                <div>
+                  <h4 className="text-slate-900 font-bold mb-1">Award-Winning Performance</h4>
+                  <p className="text-slate-600 leading-relaxed">Recipient of the prestigious <strong>i-STAR Award</strong> (ranked in the Top 5 of ~200 employees) and a two-time SPOT Award winner.</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
-            <h3 className="font-semibold text-slate-900 mb-2">Education</h3>
-            <p className="text-slate-600">IIM Indore (Class of 2027)</p>
-          </div>
+
         </div>
       </div>
     </div>
