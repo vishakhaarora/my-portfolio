@@ -41,7 +41,7 @@ export default function App() {
           <div className="relative p-1 bg-white rounded-full shadow-lg shrink-0">
             <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden bg-slate-100 border-4 border-white relative flex items-center justify-center">
                <img 
-                 src="/profile-pic.jpg" 
+                 src="/profile-pic.jpeg" 
                  alt="Vishakha Arora" 
                  onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" }}
                  className="w-full h-full object-cover block"
