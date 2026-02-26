@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, ExternalLink, Briefcase, BookOpen, Award, FileText, Download, ChevronRight, MapPin, User, TrendingUp, Building, GraduationCap, Star, CheckCircle } from 'lucide-react';
+import { Mail, ExternalLink, Briefcase, BookOpen, Award, FileText, Download, ChevronRight, MapPin, User, TrendingUp, Building, GraduationCap, Star, CheckCircle, Zap, Target, BarChart, PieChart, Database, Workflow } from 'lucide-react';
 
 // --- Custom Logo ---
 const CustomLogo = () => (
@@ -43,7 +43,6 @@ export default function App() {
                <img 
                  src="/profile-pic.jpeg" 
                  alt="Vishakha Arora" 
-                 // If the image fails to load, it will now show a generic blank silhouette avatar instead of the stock woman!
                  onError={(e) => { e.target.src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" }}
                  className="w-full h-full object-cover block"
                />
@@ -77,8 +76,8 @@ export default function App() {
         </div>
       </div>
       
-      {/* 3. HIGHLIGHTS & IMPACT SECTION (NEW) */}
-      <div className="max-w-7xl mx-auto px-4 space-y-10">
+      {/* 3. HIGHLIGHTS & IMPACT SECTION */}
+      <div className="max-w-7xl mx-auto px-4 space-y-12">
         
         {/* Quick Tag Pills */}
         <div className="flex flex-wrap gap-3 pb-4 border-b border-slate-100">
@@ -89,21 +88,20 @@ export default function App() {
           <span className="flex items-center gap-1.5 px-4 py-2 bg-slate-50 border border-slate-200 text-slate-700 rounded-full text-sm font-medium">Lean Six Sigma</span>
         </div>
 
+        {/* The Two Main Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           {/* IIM Indore Journey Card */}
-          <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-white relative overflow-hidden shadow-lg shadow-slate-900/10">
+          <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10 text-white relative overflow-hidden shadow-lg shadow-slate-900/10 transition-transform hover:-translate-y-1 duration-300">
             <div className="absolute -top-10 -right-10 opacity-10 text-white pointer-events-none">
               <GraduationCap size={250} />
             </div>
             
-            {/* Spot for IIM Indore Logo */}
             <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-md">
               <img 
                 src="/iim-logo.png" 
                 alt="IIM Indore Logo" 
                 className="w-12 h-12 object-contain"
-                // Fallback text if the logo isn't uploaded yet
                 onError={(e) => { 
                   e.target.style.display = 'none'; 
                   e.target.nextSibling.style.display = 'block'; 
@@ -114,19 +112,19 @@ export default function App() {
 
             <h2 className="text-3xl font-bold mb-2">IIM Indore</h2>
             <p className="text-pink-400 font-semibold text-lg mb-6">MBA (HRM) Candidate • Class of 2027</p>
-            <p className="text-slate-300 leading-relaxed text-lg mb-8">
-              Specializing in HR Analytics, Talent Acquisition, and Organizational Behavior. Currently translating theoretical frameworks into data-driven people management strategies.
+            <p className="text-slate-300 leading-relaxed text-lg mb-8 relative z-10">
+              Specializing in HR Analytics, Talent Acquisition, and Organizational Behavior. Translating theoretical frameworks into actionable, data-driven people management strategies.
             </p>
             
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 relative z-10">
               <span className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-medium backdrop-blur-sm">SPSS Data Analysis</span>
               <span className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-medium backdrop-blur-sm">Labour Laws</span>
-              <span className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-medium backdrop-blur-sm">Compensation & Structuring</span>
+              <span className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-medium backdrop-blur-sm">Compensation</span>
             </div>
           </div>
 
           {/* Infosys BPM Experience Card */}
-          <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm relative overflow-hidden">
+          <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm relative overflow-hidden transition-all hover:border-blue-200 hover:shadow-md duration-300">
             <div className="flex items-center gap-4 mb-8">
               <div className="p-4 bg-blue-50 text-blue-600 rounded-2xl">
                 <Building size={32} />
@@ -144,7 +142,7 @@ export default function App() {
                 </div>
                 <div>
                   <h4 className="text-slate-900 font-bold mb-1">Operational Accuracy</h4>
-                  <p className="text-slate-600 leading-relaxed">Validated 1,000+ complex U.S. mortgage documents weekly, consistently maintaining a flawless <strong>99.5% accuracy rate</strong> while meeting strict SLAs.</p>
+                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">Validated 1,000+ complex documents weekly, consistently maintaining a flawless <strong>99.5% accuracy rate</strong> while meeting strict SLAs.</p>
                 </div>
               </div>
 
@@ -154,7 +152,7 @@ export default function App() {
                 </div>
                 <div>
                   <h4 className="text-slate-900 font-bold mb-1">Process Optimization</h4>
-                  <p className="text-slate-600 leading-relaxed">Spearheaded workflow streamlining initiatives that successfully improved overall turnaround time by <strong>18%</strong>.</p>
+                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">Spearheaded workflow streamlining initiatives that successfully improved overall turnaround time by <strong>18%</strong>.</p>
                 </div>
               </div>
 
@@ -164,13 +162,84 @@ export default function App() {
                 </div>
                 <div>
                   <h4 className="text-slate-900 font-bold mb-1">Award-Winning Performance</h4>
-                  <p className="text-slate-600 leading-relaxed">Recipient of the prestigious <strong>i-STAR Award</strong> (ranked in the Top 5 of ~200 employees) and a two-time SPOT Award winner.</p>
+                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">Recipient of the prestigious <strong>i-STAR Award</strong> (ranked in the Top 5 of ~200 employees) and a two-time SPOT Award winner.</p>
                 </div>
               </div>
             </div>
           </div>
 
         </div>
+
+        {/* 4. NEW: TOOLS & ARSENAL SECTION */}
+        <div className="pt-8">
+          <div className="flex items-center gap-3 mb-8">
+            <Zap className="text-violet-600" size={28} />
+            <h3 className="text-2xl font-bold text-slate-900">Technical Arsenal</h3>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl flex flex-col items-center justify-center text-center hover:bg-white hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+              <BarChart className="text-pink-500 mb-3" size={32} />
+              <h4 className="font-bold text-slate-900">Power BI & Tableau</h4>
+              <p className="text-xs text-slate-500 mt-1">Dashboards & Visualization</p>
+            </div>
+            <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl flex flex-col items-center justify-center text-center hover:bg-white hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+              <PieChart className="text-violet-500 mb-3" size={32} />
+              <h4 className="font-bold text-slate-900">SPSS & G*Power</h4>
+              <p className="text-xs text-slate-500 mt-1">Statistical HR Analytics</p>
+            </div>
+            <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl flex flex-col items-center justify-center text-center hover:bg-white hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+              <Database className="text-emerald-500 mb-3" size={32} />
+              <h4 className="font-bold text-slate-900">Advanced Excel</h4>
+              <p className="text-xs text-slate-500 mt-1">Pivot Tables & Lookups</p>
+            </div>
+            <div className="bg-slate-50 border border-slate-200 p-6 rounded-2xl flex flex-col items-center justify-center text-center hover:bg-white hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+              <Workflow className="text-blue-500 mb-3" size={32} />
+              <h4 className="font-bold text-slate-900">Lean Six Sigma</h4>
+              <p className="text-xs text-slate-500 mt-1">Black Belt Certified</p>
+            </div>
+          </div>
+        </div>
+
+        {/* 5. NEW: LIVE PROJECTS SNAPSHOT */}
+        <div className="bg-pink-50/50 border border-pink-100 rounded-3xl p-8 sm:p-10 mt-8 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-pink-500 to-violet-500"></div>
+          
+          <div className="flex items-center gap-3 mb-8">
+            <Target className="text-pink-600" size={28} />
+            <h3 className="text-2xl font-bold text-slate-900">Featured Live Projects</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+              <h4 className="text-lg font-bold text-slate-900 mb-1">Research Analytics Intern</h4>
+              <p className="text-pink-600 text-sm font-medium mb-4">Kreative Kode • Remote</p>
+              <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                Synthesized organizational and workforce insights by reviewing 100+ academic journals. Prepared 15+ comprehensive research reports mapping linkages between people, processes, and policies.
+              </p>
+              <span className="inline-block px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-medium">Thematic Analysis</span>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+              <h4 className="text-lg font-bold text-slate-900 mb-1">Predictive Job Satisfaction</h4>
+              <p className="text-violet-600 text-sm font-medium mb-4">MBA HR Project • IIM Indore</p>
+              <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                Performed statistical analysis on social science HR data (demographic, nominal, ordinal) using SPSS. Utilized decision trees and BI tools to predict employee attrition and retention.
+              </p>
+              <span className="inline-block px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-medium">Predictive Modeling</span>
+            </div>
+          </div>
+          
+          <div className="mt-8 text-center">
+             <button 
+                onClick={() => setCurrentPage('resume')}
+                className="text-pink-600 font-medium hover:text-pink-700 transition-colors flex items-center gap-1 mx-auto"
+              >
+                See all projects and education <ChevronRight size={16} />
+              </button>
+          </div>
+        </div>
+
       </div>
     </div>
   );
@@ -237,13 +306,24 @@ export default function App() {
                 <li>Prepared 15+ research reports and reviewed 100+ journals to map people, processes, and policies.</li>
               </ul>
             </div>
-            <div className="relative pl-6 border-l-2 border-slate-100">
+            <div className="relative pl-6 border-l-2 border-slate-100 pb-6">
               <div className="absolute w-3 h-3 bg-violet-500 rounded-full -left-[7px] top-1.5"></div>
               <h3 className="text-lg font-semibold text-slate-900">MBA HR Course Projects</h3>
               <p className="text-violet-600 font-medium text-sm mb-3">IIM Indore</p>
               <ul className="space-y-2 text-sm text-slate-600 list-disc list-outside ml-4">
                 <li><strong>HR Analytics:</strong> Used SPSS, Power BI, and Tableau to predict job satisfaction.</li>
                 <li><strong>Talent Acquisition:</strong> Applied psychometric instrumentation and hypothesis testing.</li>
+                <li><strong>Labour Laws:</strong> Analyzed grievance handling and dispute resolution systems.</li>
+                <li><strong>Performance:</strong> Evaluated appraisal systems and salary structures across job levels.</li>
+              </ul>
+            </div>
+            <div className="relative pl-6 border-l-2 border-slate-100">
+              <div className="absolute w-3 h-3 bg-violet-500 rounded-full -left-[7px] top-1.5"></div>
+              <h3 className="text-lg font-semibold text-slate-900">Intern Teacher</h3>
+              <p className="text-violet-600 font-medium text-sm mb-3">Govt. Sr. Sec. School, Bandikui • Jul 2021 - Nov 2021</p>
+              <ul className="space-y-2 text-sm text-slate-600 list-disc list-outside ml-4">
+                <li>Taught and mentored 160 senior secondary students.</li>
+                <li>Designed 12+ subject-wise lesson plans and classroom aids.</li>
               </ul>
             </div>
           </div>
@@ -302,7 +382,7 @@ export default function App() {
             <div>
               <h3 className="text-slate-900 font-semibold mb-3">Core Competencies</h3>
               <div className="flex flex-wrap gap-2">
-                {['HR Analytics', 'Talent Acquisition', 'Performance Management', 'SPSS', 'Power BI', 'Tableau'].map((skill) => (
+                {['HR Analytics', 'Talent Acquisition', 'Performance Management', 'SPSS', 'Power BI', 'Tableau', 'Advanced Excel'].map((skill) => (
                   <span key={skill} className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium">
                     {skill}
                   </span>
@@ -313,7 +393,7 @@ export default function App() {
             <div>
               <h3 className="text-slate-900 font-semibold mb-3">Certifications</h3>
               <div className="flex flex-wrap gap-2">
-                {['Six Sigma Black Belt', 'Cultural Intelligence', 'Behavioral Essentials'].map((cert) => (
+                {['Six Sigma Black Belt', 'Cultural Intelligence', 'Behavioral Essentials', 'Lean Accelerator'].map((cert) => (
                   <span key={cert} className="px-3 py-1.5 bg-violet-50 text-violet-700 rounded-lg text-sm font-medium">
                     {cert}
                   </span>
