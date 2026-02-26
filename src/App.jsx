@@ -29,9 +29,9 @@ export default function App() {
           src="/cover-pic.jpg" 
           alt="Cover Background" 
           onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80" }}
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center block"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent pointer-events-none"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 relative -mt-24 sm:-mt-32 mb-16">
@@ -44,7 +44,7 @@ export default function App() {
                  src="/profile-pic.jpg" 
                  alt="Vishakha Arora" 
                  onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" }}
-                 className="w-full h-full object-cover"
+                 className="w-full h-full object-cover block"
                />
             </div>
           </div>
@@ -258,7 +258,19 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-white text-slate-600 font-sans selection:bg-pink-100 selection:text-pink-900">
+    <div className="min-h-screen bg-white text-slate-600 font-sans selection:bg-pink-100 selection:text-pink-900 w-full overflow-x-hidden">
+      
+      {/* --- THIS CSS RESET FIXES THE VITE LEFT-ALIGNMENT ISSUE --- */}
+      <style>{`
+        html, body, #root {
+          margin: 0 !important;
+          padding: 0 !important;
+          max-width: 100% !important;
+          width: 100% !important;
+          display: block !important;
+          background: white !important;
+        }
+      `}</style>
       
       {/* Top Navigation */}
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
