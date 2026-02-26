@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mail, ExternalLink, Briefcase, BookOpen, Award, FileText, Download, ChevronRight, MapPin, User } from 'lucide-react';
 
 // --- Custom Logo ---
+// Added hardcoded width and height safety fallbacks
 const CustomLogo = () => (
-  <svg viewBox="0 0 100 100" className="w-8 h-8 drop-shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 100 100" width="32" height="32" className="w-8 h-8 drop-shadow-sm shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="logoGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#db2777" /> {/* Pink 600 */}
@@ -19,22 +20,31 @@ const CustomLogo = () => (
 );
 
 export default function App() {
-  // State to manage which "page" is currently active
   const [currentPage, setCurrentPage] = useState('home');
+
+  // Automatically inject Tailwind CSS so the site is styled perfectly 
+  // without needing terminal configuration!
+  useEffect(() => {
+    if (!document.getElementById('tailwind-cdn')) {
+      const script = document.createElement('script');
+      script.id = 'tailwind-cdn';
+      script.src = 'https://cdn.tailwindcss.com';
+      document.head.appendChild(script);
+    }
+  }, []);
 
   // --- PAGE 1: HOME PAGE ---
   const renderHome = () => (
     <div className="animate-in fade-in duration-500">
       
       {/* 1. COVER PICTURE SECTION */}
-      {/* TO ADD YOUR COVER PIC: Replace the 'src' URL below with your image link */}
       <div className="w-full h-64 md:h-80 lg:h-96 relative bg-slate-200 overflow-hidden border-b border-slate-200">
         <img 
           src="/cover-pic.jpg" 
           alt="Cover Background" 
+          onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80" }}
           className="w-full h-full object-cover object-center"
         />
-        {/* Optional overlay gradient to make text on top readable if you add any */}
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
       </div>
 
@@ -42,12 +52,13 @@ export default function App() {
         <div className="flex flex-col md:flex-row gap-8 items-start md:items-end">
           
           {/* 2. YOUR PROFILE PICTURE */}
-          {/* TO ADD YOUR PHOTO: Replace the 'src' URL below with your image link */}
-          <div className="relative p-1 bg-white rounded-full shadow-lg">
+          {/* Added shrink-0 so it stays a perfect circle and never stretches to an oval */}
+          <div className="relative p-1 bg-white rounded-full shadow-lg shrink-0">
             <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden bg-slate-100 border-4 border-white relative flex items-center justify-center">
                <img 
-                 src="/profile-pic.jpg"
+                 src="/profile-pic.jpg" 
                  alt="Vishakha Arora" 
+                 onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" }}
                  className="w-full h-full object-cover"
                />
             </div>
@@ -111,7 +122,6 @@ export default function App() {
           <p className="text-slate-500 mt-1">Detailed overview of my professional journey.</p>
         </div>
         
-        {/* TO ADD DOWNLOAD LINK: Change href to the path of your PDF (e.g., href="/Vishakha_Arora_Resume.pdf") */}
         <a 
           href="/Vishakha_Arora_HR_Resume.pdf" 
           download="Vishakha_Arora_Resume.pdf"
