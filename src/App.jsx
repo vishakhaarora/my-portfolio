@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Mail, ExternalLink, Briefcase, BookOpen, Award, FileText, Download, ChevronRight, MapPin, User } from 'lucide-react';
 
 // --- Custom Logo ---
-// Added hardcoded width and height safety fallbacks
 const CustomLogo = () => (
   <svg viewBox="0 0 100 100" width="32" height="32" className="w-8 h-8 drop-shadow-sm shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="logoGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#db2777" /> {/* Pink 600 */}
-        <stop offset="100%" stopColor="#7c3aed" /> {/* Violet 600 */}
+        <stop offset="0%" stopColor="#db2777" />
+        <stop offset="100%" stopColor="#7c3aed" />
       </linearGradient>
     </defs>
-    {/* Geometric V */}
     <path d="M15,20 L50,85 L85,20" stroke="url(#logoGradLight)" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round"/>
-    {/* Intersecting A */}
     <path d="M30,80 L50,35 L70,80" stroke="#1e293b" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
     <line x1="42" y1="65" x2="58" y2="65" stroke="#1e293b" strokeWidth="8" strokeLinecap="round"/>
   </svg>
@@ -21,17 +18,6 @@ const CustomLogo = () => (
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
-
-  // Automatically inject Tailwind CSS so the site is styled perfectly 
-  // without needing terminal configuration!
-  useEffect(() => {
-    if (!document.getElementById('tailwind-cdn')) {
-      const script = document.createElement('script');
-      script.id = 'tailwind-cdn';
-      script.src = 'https://cdn.tailwindcss.com';
-      document.head.appendChild(script);
-    }
-  }, []);
 
   // --- PAGE 1: HOME PAGE ---
   const renderHome = () => (
@@ -52,7 +38,6 @@ export default function App() {
         <div className="flex flex-col md:flex-row gap-8 items-start md:items-end">
           
           {/* 2. YOUR PROFILE PICTURE */}
-          {/* Added shrink-0 so it stays a perfect circle and never stretches to an oval */}
           <div className="relative p-1 bg-white rounded-full shadow-lg shrink-0">
             <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden bg-slate-100 border-4 border-white relative flex items-center justify-center">
                <img 
@@ -314,7 +299,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* Main Content Area (Switches based on state) */}
+      {/* Main Content Area */}
       <main>
         {currentPage === 'home' ? renderHome() : renderResume()}
       </main>
