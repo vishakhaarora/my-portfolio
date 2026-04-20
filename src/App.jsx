@@ -219,7 +219,7 @@ export default function App() {
         <h2 className="section-title">In Action</h2>
         <div className="media-grid">
           <div className="media-placeholder">
-            <img src="/event-sport-conference.jpg" alt="Sport & Business Conference 2.0" className="media-real-img"
+            <img src="https://github.com/vishakhaarora/my-portfolio/blob/main/public/Sports.jpeg" alt="Sport & Business Conference 2.0" className="media-real-img"
               onError={e=>{e.target.style.display='none';e.target.nextSibling.style.display='flex';}}/>
             <div className="media-inner" style={{display:'none'}}><FileText size={28} color="var(--gold)"/><p>Sport & Business Conference 2.0</p><span>Add photo/slide</span></div>
           </div>
