@@ -37,7 +37,7 @@ export default function App() {
   // ── DATA ────────────────────────────────────────────────────────────────
 
   const services = [
-    { icon: <Users size={26}/>, title: 'HR Consulting', color: '#7c5cbf',
+    { icon: <Users size={26}/>, title: 'HR Consulting', color: '#6340a8',
       desc: 'SOPs, KRAs, talent acquisition frameworks, performance management, and HR policy architecture. Currently building HR systems at VM Management Consulting.',
       tags: ['SOPs & KRAs', 'Talent Strategy', 'HR Policy', 'Org Design'] },
     { icon: <Briefcase size={26}/>, title: 'General Management Advisory', color: '#9b5cbf',
@@ -59,7 +59,7 @@ export default function App() {
 
   const ventures = [
     { name: 'VM Management Consulting & Advisory', url: 'https://vijaymahnot.com/', role: 'Management Consulting Intern',
-      color: '#7c5cbf', tag: 'Current Role',
+      color: '#6340a8', tag: 'Current Role',
       desc: 'Interning at VM Consultancy handling HR digitization, SOP creation, KRA frameworks, and strategic advisory. Construction and digital marketing clients are managed under this practice.',
       highlights: ['SOP & KRA Development', 'HR Digitization', 'Client: Construction Sector', 'Client: Digital Marketing'] },
     { name: 'Learning Panda', url: 'https://www.learningpanda.ai/', role: 'Strategic Growth Partner',
@@ -189,30 +189,27 @@ export default function App() {
         </div>
       </section>
 
-      {/* RESEARCH HIGHLIGHTS */}
+      {/* VENTURES SPOTLIGHT */}
       <section className="research-snap max-container">
         <div className="section-header-row">
-          <div><p className="section-eyebrow">Key Research & Presentations</p><h2 className="section-title">Spotlight</h2></div>
-          <button onClick={() => setCurrentPage('research')} className="see-all-btn">View all research <ChevronRight size={13}/></button>
+          <div><p className="section-eyebrow">Engagements & Experience</p><h2 className="section-title">Ventures</h2></div>
+          <button onClick={() => setCurrentPage('ventures')} className="see-all-btn">View all ventures <ChevronRight size={13}/></button>
         </div>
-        <div className="spotlight-grid">
-          {research.filter(r=>r.highlight).map(r=>(
-            <div key={r.title} className="spotlight-card">
-              <span className={`research-status status-${r.status.toLowerCase().replace(' ','_')}`}>{r.status}</span>
-              <h3 className="spotlight-title">{r.title}</h3>
-              <p className="spotlight-venue">{r.venue}</p>
-              <p className="spotlight-desc">{r.desc}</p>
-              <div className="research-tags">{r.tags.map(t=><span key={t} className="research-tag">{t}</span>)}</div>
+        <div className="ventures-snap-grid">
+          {ventures.map(v=>(
+            <div key={v.name} className="venture-snap-card" style={{'--accent':v.color}}>
+              <div className="venture-snap-bar"/>
+              <div className="venture-snap-body">
+                <span className="venture-tag-pill" style={{color:v.color}}>{v.tag}</span>
+                <h3 className="spotlight-title">{v.name}</h3>
+                <p className="spotlight-venue">{v.role}</p>
+                <p className="spotlight-desc">{v.desc}</p>
+                <div className="venture-highlights" style={{marginTop:'.6rem'}}>
+                  {v.highlights.slice(0,3).map(h=><span key={h} className="venture-hl"><CheckCircle2 size={11}/> {h}</span>)}
+                </div>
+              </div>
             </div>
           ))}
-          {/* IIT Bombay card */}
-          <div className="spotlight-card iit-card">
-            <span className="research-status status-ongoing">Ongoing</span>
-            <h3 className="spotlight-title">IIT Bombay Research Collaboration</h3>
-            <p className="spotlight-venue">Workforce Dynamics & Organizational Behavior</p>
-            <p className="spotlight-desc">Ongoing collaboration with IIT Bombay researchers — investigating culture, team dynamics, and performance outcomes across knowledge-intensive industries.</p>
-            <div className="research-tags"><span className="research-tag">IIT Bombay</span><span className="research-tag">Org Behavior</span><span className="research-tag">Culture Analytics</span></div>
-          </div>
         </div>
       </section>
 
@@ -242,7 +239,6 @@ export default function App() {
             <div className="media-inner" style={{display:'none'}}><Star size={28} color="var(--gold)"/><p>VM Consulting — Client Events</p><span>Add photo/slide</span></div>
           </div>
         </div>
-        <p className="media-note">💡 Add your event photos to the <code>public/</code> folder with filenames like <code>event-sport-conference.jpg</code> — they'll appear automatically above.</p>
       </section>
 
       {/* CTA */}
@@ -393,12 +389,12 @@ export default function App() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-        html,body,#root{width:100%;max-width:100%;overflow-x:hidden;background:#faf8ff!important;display:block!important;}
+        html,body,#root{width:100%;max-width:100%;overflow-x:hidden;background:#f7f4ff!important;display:block!important;}
         :root{
-          --gold:#7c5cbf;--gold-light:#a78de0;--gold-pale:#f0ebff;
-          --ink:#1e1730;--ink-light:#3b3060;--muted:#7a6e99;
-          --border:#ddd5f5;--bg:#faf8ff;--white:#ffffff;
-          --pink:#9d50d4;--violet:#7c5cbf;
+          --gold:#6340a8;--gold-light:#9270d0;--gold-pale:#ece5ff;
+          --ink:#18112e;--ink-light:#32245a;--muted:#6b5e90;
+          --border:#cec0ef;--bg:#f7f4ff;--white:#ffffff;
+          --pink:#8b3ec4;--violet:#6340a8;
           --serif:'Cormorant Garamond',Georgia,serif;
           --sans:'DM Sans',system-ui,sans-serif;
         }
@@ -406,7 +402,7 @@ export default function App() {
         .max-container{max-width:1160px;margin:0 auto;padding:0 2rem;}
 
         /* NAV */
-        .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,248,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s;}
+        .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(247,244,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s;}
         .site-nav.scrolled{border-bottom-color:var(--border);box-shadow:0 2px 20px rgba(0,0,0,.05);}
         .nav-inner{max-width:1160px;margin:0 auto;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;}
         .nav-brand{display:flex;align-items:center;gap:.6rem;cursor:pointer;background:none;border:none;text-align:left;}
@@ -421,7 +417,7 @@ export default function App() {
         .nav-action-link:hover{color:var(--gold);}
 
         /* HERO */
-        .hero-section{padding-top:5rem;padding-bottom:2.5rem;background:linear-gradient(135deg,#faf8ff 0%,#ede5ff 100%);}
+        .hero-section{padding-top:5rem;padding-bottom:2.5rem;background:linear-gradient(135deg,#f7f4ff 0%,#e5d8ff 100%);}
         .hero-inner{padding-top:2rem;}
         .hero-grid{display:grid;grid-template-columns:1fr 400px;gap:3.5rem;align-items:center;}
         .hero-badge{display:inline-flex;align-items:center;gap:.45rem;padding:.3rem .85rem;background:var(--gold-pale);border:1px solid var(--gold-light);border-radius:100px;font-size:.72rem;font-weight:500;color:var(--ink-light);margin-bottom:1.25rem;}
@@ -495,6 +491,11 @@ export default function App() {
         .spotlight-venue{font-size:.72rem;color:var(--muted);margin-bottom:.6rem;}
         .spotlight-desc{font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:.75rem;}
         .iit-card{background:linear-gradient(135deg,#f0ebff,#e8e0f7);border-color:#c5b5e8;}
+        .ventures-snap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+        .venture-snap-card{background:var(--white);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;transition:box-shadow .2s;}
+        .venture-snap-card:hover{box-shadow:0 8px 28px rgba(99,64,168,.1);}
+        .venture-snap-bar{width:4px;flex-shrink:0;background:var(--accent,var(--gold));}
+        .venture-snap-body{padding:1.25rem;flex:1;}
 
         /* MEDIA */
         .media-section{padding:2rem 2rem;}
@@ -596,6 +597,7 @@ export default function App() {
           .about-snap-grid{grid-template-columns:1fr;}
           .services-grid{grid-template-columns:1fr 1fr;}
           .spotlight-grid{grid-template-columns:1fr 1fr;}
+          .ventures-snap-grid{grid-template-columns:1fr;}
           .media-grid{grid-template-columns:1fr 1fr;}
           .pillars-mini{grid-template-columns:1fr;}
           .status-banner{flex-direction:column;align-items:flex-start;gap:.75rem;}
