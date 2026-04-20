@@ -82,7 +82,7 @@ export default function App() {
       desc: 'Presented research on sports management and human capital strategy at the Sport and Business Conference 2.0, exploring intersections of HR and athletic organizations.',
       tags: ['Sports HR', 'Sports Management', 'Human Capital'], highlight: true },
     { title: 'Strategic Human Capital in Indian Sports',
-      venue: 'Unstop National Conference, 2025', status: 'Published',
+      venue: 'National Conference, 2025', status: 'Published',
       desc: 'Examined how sports organizations in India can leverage structured HR practices to build sustainable competitive advantage through human capital investment.',
       tags: ['HR Strategy', 'Sports Management', 'Human Capital'] },
   ];
@@ -224,9 +224,9 @@ export default function App() {
             <div className="media-inner" style={{display:'none'}}><FileText size={28} color="var(--gold)"/><p>Sport & Business Conference 2.0</p><span>Add photo/slide</span></div>
           </div>
           <div className="media-placeholder">
-            <img src="/event-unstop-2025.jpg" alt="Unstop Conference 2025" className="media-real-img"
+            <img src="/event--2025.jpg" alt="Conference 2025" className="media-real-img"
               onError={e=>{e.target.style.display='none';e.target.nextSibling.style.display='flex';}}/>
-            <div className="media-inner" style={{display:'none'}}><Award size={28} color="var(--gold)"/><p>Unstop Conference 2025 — Paper Presentation</p><span>Add photo/slide</span></div>
+            <div className="media-inner" style={{display:'none'}}><Award size={28} color="var(--gold)"/><p> Conference 2025 — Paper Presentation</p><span>Add photo/slide</span></div>
           </div>
           <div className="media-placeholder">
             <img src="/event-cere-2026.jpg" alt="CERE 2026" className="media-real-img"
@@ -619,7 +619,7 @@ export default function App() {
             <CustomLogo/>
             <div>
               <span className="nav-brand-name">Vishakha Arora</span>
-              <span className="nav-brand-sub">HR & Management Consultant</span>
+              <span className="nav-brand-sub"> HR & Management Consultant</span>
             </div>
           </button>
           <nav className="nav-links">
